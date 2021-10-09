@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  provisioner:
+    build:
+      context: .
+      dockerfile: ./DockerfileControlNode
+    stdin_open: true
+    tty: true
+    
+networks: 
+  default: 
+    external: 
+      name: ansibleTestNetwork
