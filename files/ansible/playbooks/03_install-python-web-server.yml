@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Install Python packages
+      copy: src=/root/app.py dest=/etc/init.d mode=0755
+    - name: Copy SysV service
+      copy: src=/root/server.sh dest=/etc/init.d/server mode=0755
+    - name: Update links to SysV server service
+      ansible.builtin.command: update-rc.d server defaults

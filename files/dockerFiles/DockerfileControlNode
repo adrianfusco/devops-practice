@@ -1,0 +1,17 @@
+FROM alpine:3.14.2
+
+RUN apk --update --no-cache add \
+                                ca-certificates \
+                                git \
+                                openssh \
+                                openssl \
+                                python3 \
+                                ansible \
+                                vim
+
+RUN mkdir /etc/ansible
+ADD ./files/keys/id_rsa_docker_test /root/.ssh/id_rsa
+ADD ./files/scripts/sysV/server.sh /root/
+ADD files/ansible/playbooks/ /root/playbooks
+ADD files/ansible/config/ /etc/ansible/
+ADD ./api/app.py /root/

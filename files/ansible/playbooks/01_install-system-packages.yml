@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+    - name: Install system packages
+      apt:
+        name: vim,python3-pip
+        state: latest
+        update_cache: yes

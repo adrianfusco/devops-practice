@@ -16,7 +16,7 @@ function removeDockers() {
 }
 
 function createKeys() {
-  yes | ssh-keygen -t rsa -b 4096 -f ./tmp/id_rsa_docker_test
+  yes | ssh-keygen -t rsa -b 4096 -f ./files/keys/id_rsa_docker_test
 }
 
 function createNetwork() {
@@ -28,7 +28,7 @@ function createNetwork() {
 
 function buildAndCreateManagedNodes() {
   netWithoutHostSide=10.20.10.
-  docker build -f DockerfileManagedNode -t managedansiblenode .
+  docker build -f files/dockerFiles/DockerfileManagedNode -t managedansiblenode .
   for i in {2..10}
   do
     docker run --network ${networkName} --ip "${netWithoutHostSide}${i}"  -t -d --name "client${i}" managedansiblenode:latest 

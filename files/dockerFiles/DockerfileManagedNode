@@ -1,0 +1,22 @@
+FROM debian:buster-slim
+
+# Setup SSHd Server
+RUN apt-get update -yqq && \
+    apt-get install -yqq openssh-server python3 whois
+
+#apk --update --no-cache add openssh openrc python3
+#RUN rc-update add sshd
+#RUN rc-status
+#RUN touch /run/openrc/softlevel
+#RUN ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ''
+
+
+# Random password for root
+RUN pass=$(echo date +%s | sha256sum | base64 | head -c 32; echo | mkpasswd) && \
+    echo "root:${pass}" | chpasswd
+
+# Add key to be able for login (this is just a test, SAFE your private keys :D)
+ADD ./files/keys/id_rsa_docker_test.pub /root/.ssh/authorized_keys
+
+                                   # Background 
+ENTRYPOINT service ssh restart && tail -f /dev/null
