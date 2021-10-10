@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#
+
 # _________________________________________________ #
 
 networkName="ansibleTestNetwork"
@@ -12,6 +14,7 @@ function removeDockers() {
   for x in {2..10}; do 
     echo "Trying to remove client$x";
     docker rm --force "client$x" >/dev/null 2>&1;
+    docker-compose down
   done
 }
 
