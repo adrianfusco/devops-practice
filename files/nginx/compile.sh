@@ -1,5 +1,7 @@
 # Script made to compile Nginx and all required modules based on linux-x86_64
 
+WORKDIR=$(pwd)
+
 apt-get update -yqq
 # We need GCC to build and compile
 apt-get install -yqq wget build-essential
@@ -12,7 +14,7 @@ tar -xvf zlib-1.2.11.tar.gz
 cd zlib*/
 ./configure
 make && make install
-cd ..
+cd $WORKDIR
 ###########
 # openssl #
 ###########
@@ -21,7 +23,7 @@ tar -xvf openssl-1.1.1g.tar.gz
 cd openssl*/
 ./Configure linux-x86_64 --prefix=/usr
 make && make install
-cd ..
+cd $WORKDIR
 ########
 # pcre #
 ########
@@ -30,7 +32,7 @@ tar -xjf pcre-8.45.tar.bz2
 cd pcre*/ 
 ./configure
 make && make install
-cd ..
+cd $WORKDIR
 #########
 # nginx #
 #########
@@ -47,8 +49,10 @@ cd nginx*/
 --with-mail=dynamic \
 --with-pcre=../pcre-8.45
 make && make install
-
-# Create .deb package structure:
+cd $WORKDIR
+#################################
+# Create .deb package structure #
+#################################
 mkdir nginx-personal-compilation_1.0-1
 mkdir nginx-personal-compilation_1.0-1/usr
 mkdir nginx-personal-compilation_1.0-1/usr/local
