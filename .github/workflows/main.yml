@@ -7,7 +7,9 @@ jobs:
   Compile-Nginx-And-Create-Deb-Package:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Test1
         run: |
           pwd
+      - name: Test2
+        run: |
           ls -ltrahR
