@@ -8,7 +8,6 @@ apt-get install -yqq wget build-essential
 # zlib #
 ########
 wget http://zlib.net/zlib-1.2.11.tar.gz
-mkdir zlib
 tar -xvf zlib-1.2.11.tar.gz
 cd zlib*/
 ./configure
