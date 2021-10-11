@@ -12,8 +12,8 @@ jobs:
         run: |
           cd files/nginx/
           bash compile.sh
-      - uses: actions/upload-artifact@v2
       - name: Upload .deb package artifact
+        uses: actions/upload-artifact@v2
         with:
           name: nginx-personal-compilation
           path: files/nginx/nginx-personal-compilation_1.0-1.deb
