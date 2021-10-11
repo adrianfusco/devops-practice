@@ -7,9 +7,13 @@ jobs:
   Compile-Nginx-And-Create-Deb-Package:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Test1
         run: |
-          pwd
-      - name: Test2
-        run: |
-          ls -ltrahR /home/runner/work
+          cd files/nginx/
+          bash compile.sh
+      - uses: actions/upload-artifact@v2
+      - name: Upload .deb package artifact
+        with:
+          name: nginx-personal-compilation
+          path: files/nginx/nginx-personal-compilation_1.0-1.deb
