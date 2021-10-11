@@ -11,7 +11,7 @@ jobs:
       - name: Test1
         run: |
           cd files/nginx/
-          bash compile.sh
+          sudo bash compile.sh
       - name: Upload .deb package artifact
         uses: actions/upload-artifact@v2
         with:
