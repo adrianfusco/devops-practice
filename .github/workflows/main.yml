@@ -1,0 +1,13 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  Compile-Nginx-And-Create-Deb-Package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          pwd
+          ls -ltrahR
