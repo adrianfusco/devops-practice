@@ -16,4 +16,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: nginx-personal-compilation
-          path: files/nginx/nginx-personal-compilation_1.0-1.deb
+          path: /home/runner/work/devops-practice/devops-practice/files/nginx/nginx-personal-compilation_1.0-1.deb
